@@ -1,0 +1,50 @@
+{
+  "name": "kgsa-app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^5.0.1",
+    "emailjs-com": "^3.2.0",
+    "moment": "^2.29.1",
+    "mongoose-sequence": "^5.3.1",
+    "nginx": "^1.0.3",
+    "react": "^17.0.2",
+    "react-big-calendar": "^0.33.5",
+    "react-bootstrap": "^2.0.0-alpha.2",
+    "react-dom": "^17.0.2",
+    "react-html-parser": "^2.0.2",
+    "react-icons": "^4.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "styled-components": "^5.3.0",
+    "web-vitals": "^1.1.2"
+  },
+  "scripts": {
+    "start": "react-scripts --max_old_space_size=4096 start",
+    "build": "react-scripts --max_old_space_size=4096 build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "deploy-production": "react-scripts build && scp -r ./build/* jiye@167.172.138.68:/var/www/umasskgsa.com/html"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0"
+  }
+}

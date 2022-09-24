@@ -1,0 +1,35 @@
+version: "3"
+services:
+  react-app:
+    image: react-app-production:${ENV}
+    # build: ./frontend/ we dont need this anymore because there always will be images 
+    restart: unless-stopped # if somehow it exits/crushed, docker will try to restart unless we press stop
+    ports: 
+      - "80:80" # http
+      # - "443:443" #https
+    networks: 
+      - mern-app
+    volumes:
+      # - nginx/nginx.conf:/etc/nginx/conf.d
+      # - caddy-config:/config
+    tty: true
+  api-server:
+    image: api-server
+    # build: ./backend/
+    restart: unless-stopped # if somehow it exits, docker will try to restart unless we press stop
+    env_file: ./backend/config/${ENV}.env
+    ports :
+      - "3001:3001"
+    networks: 
+      - mern-app
+    # no need mongodb image cuz we need mongoAtlas 
+networks:
+  mern-app:
+    driver: bridge
+volumes: 
+  mongo-data:
+    driver: local
+  # caddy-data:
+    # driver: local
+  # caddy-config: 
+    # driver: local
